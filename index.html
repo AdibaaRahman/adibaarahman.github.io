@@ -44,7 +44,60 @@
 
   <section id="projects">
     <h2>Projects</h2>
-    <p>Projects coming soon...</p>
+
+    <div class="project">
+      <h3>📝 Blog Title Generator</h3>
+      <p>A simple web tool that helps users generate catchy blog titles using custom prompts. Built using HTML, CSS, and JavaScript.</p>
+      <a href="https://adibaarahman.github.io/tool.html" target="_blank">🔗 Live Demo</a> |
+      <a href="https://github.com/adibaarahman/adibaarahman.github.io/blob/main/tool.html" target="_blank">📂 View Code</a>
+      <br />
+      <a href="https://github.com/adibaarahman" target="_blank">
+        <img src="https://img.shields.io/badge/GitHub-adibaarahman-blue?logo=github" alt="GitHub Badge" style="margin-top: 10px;">
+      </a>
+    </div>
+
+    <div class="project">  
+      <h3>🎓 Student Grade Calculator (Python)</h3>
+      <p>This project takes student marks and returns the grade based on score using simple if-elif conditions.</p>
+      <pre>
+marks = int(input("Enter your marks: "))
+
+if marks >= 90:
+    print("Grade A")
+elif marks >= 75:
+    print("Grade B")
+elif marks >= 50:
+    print("Grade C")
+else:
+    print("Fail")
+      </pre>
+    </div>
+
+    <div class="project">
+      <h3>💡 LED Blink with Arduino (IoT)</h3>
+      <p>My first IoT project using Arduino Uno. The code blinks an LED connected to pin 13 every second.</p>
+      <pre>
+void setup() {
+  pinMode(13, OUTPUT);
+}
+
+void loop() {
+  digitalWrite(13, HIGH);
+  delay(1000);
+  digitalWrite(13, LOW);
+  delay(1000);
+}
+      </pre>
+    </div>
+
+    <div class="project">
+      <h3>📅 Python Calendar Generator</h3>
+      <p>Using Python's built-in calendar module to display a full year calendar for 2025.</p>
+      <pre>
+import calendar
+print(calendar.calendar(2025))
+      </pre>
+    </div>
   </section>
 
   <section id="blog">
@@ -56,7 +109,10 @@
     <h2>Contact Me</h2>
     <p>Email: <a href="mailto:adibarahmanwarsiii@gmail.com">adibarahmanwarsiii@gmail.com</a></p>
     <p>Resume: <a href="#">Coming Soon</a></p>
-    <p>GitHub: <a href="#">Your GitHub Link</a></p>
+    <p>
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/github.svg" alt="GitHub Icon" style="width:20px; vertical-align:middle; margin-right:5px;">
+      <a href="https://github.com/adibaarahman" target="_blank">github.com/adibaarahman</a>
+    </p>
   </section>
 
   <footer>

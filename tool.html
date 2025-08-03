@@ -154,10 +154,25 @@
       border-radius: 8px;
       cursor: pointer;
       transition: background 0.3s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     body.dark .title-item {
       background: #2a2a2a;
+    }
+
+    .copy-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: #0077ff;
+    }
+
+    body.dark .copy-btn {
+      color: #66b2ff;
     }
 
     .saved-section {
@@ -214,7 +229,7 @@
     <h2 class="section-title">Generate Blog Titles</h2>
     <div class="tool-box">
       <label for="keywordInput">Keyword / Topic:</label>
-      <input type="text" id="keywordInput" placeholder="e.g. productivity, travel, AI" />
+      <input type="text" id="keywordInput" maxlength="50" placeholder="e.g. productivity, travel, AI" />
 
       <label for="toneInput">Tone:</label>
       <select id="toneInput">
@@ -239,12 +254,12 @@
 
   <!-- Footer -->
   <footer>
-    &copy; 2025 Smart Blog Title Generator. All rights reserved.
+    &copy; 2025 Adiba Rahman. All rights reserved.
   </footer>
 
   <!-- Script -->
   <script>
-    let saved = [];
+    let saved = JSON.parse(localStorage.getItem("savedTitles")) || [];
 
     function generateTitles() {
       const titleList = document.getElementById('titleList');
@@ -281,6 +296,7 @@
         return;
       }
       saved.push(title);
+      localStorage.setItem("savedTitles", JSON.stringify(saved));
       renderSaved();
     }
 
@@ -290,19 +306,37 @@
       saved.forEach(t => {
         const div = document.createElement('div');
         div.className = 'title-item';
-        div.textContent = t;
+
+        const span = document.createElement('span');
+        span.textContent = t;
+
+        const btn = document.createElement('button');
+        btn.className = 'copy-btn';
+        btn.innerHTML = '📋';
+        btn.title = 'Copy to clipboard';
+        btn.onclick = (e) => {
+          e.stopPropagation();
+          navigator.clipboard.writeText(t);
+        };
+
+        div.appendChild(span);
+        div.appendChild(btn);
         savedDiv.appendChild(div);
       });
     }
 
     function clearSaved() {
       saved = [];
+      localStorage.removeItem("savedTitles");
       renderSaved();
     }
 
     function toggleTheme() {
       document.body.classList.toggle('dark');
     }
+
+    // Load saved titles on page load
+    window.onload = renderSaved;
   </script>
 </body>
 </html>

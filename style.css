@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,8 +10,10 @@ body {
   line-height: 1.6;
   background-color: #f9f9ff;
   color: #333;
+  font-size: 16px;
 }
 
+/* Header */
 header {
   background-color: #663399;
   color: white;
@@ -32,6 +35,7 @@ nav a {
   font-weight: 500;
 }
 
+/* Hero Section */
 .hero {
   background-color: #eeeafd;
   padding: 60px 20px;
@@ -43,6 +47,7 @@ nav a {
   font-weight: bold;
 }
 
+/* General Section Styling */
 section {
   padding: 40px 20px;
   max-width: 800px;
@@ -59,10 +64,93 @@ ul {
   padding-left: 20px;
 }
 
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
   background-color: #f0eaff;
   color: #666;
   font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+/* Projects Section */
+#projects {
+  padding: 40px 20px;
+  background-color: #f8f8f8;
+}
+
+#projects h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.project {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.project h3 {
+  color: #0077cc;
+  margin-top: 0;
+}
+
+.project p {
+  font-size: 16px;
+  color: #444;
+}
+
+/* Improved Button Style Links */
+.project a {
+  display: inline-block;
+  margin: 10px 10px 0 0;
+  padding: 8px 14px;
+  text-decoration: none;
+  background-color: #663399;
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.project a:hover {
+  background-color: #512b85;
+  color: #fff;
+}
+
+/* Code Block Styling */
+pre {
+  background-color: #f0f0f0;
+  padding: 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+
+  .project h3 {
+    font-size: 18px;
+  }
+
+  nav a {
+    font-size: 14px;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
 }
