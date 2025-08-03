@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Blog Title Generator</title>
+  <style>
+    :root {
+      --bg-light: #f5f7fa;
+      --bg-dark: #121212;
+      --text-light: #333;
+      --text-dark: #f5f5f5;
+      --card-light: #ffffff;
+      --card-dark: #1e1e1e;
+      --button-light: #0077ff;
+      --button-dark: #2196f3;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      line-height: 1.6;
+      background: var(--bg-light);
+      color: var(--text-light);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark {
+      background: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    header, section, footer {
+      padding: 2rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .hero {
+      text-align: center;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      padding: 4rem 2rem;
+      border-radius: 16px;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero button.cta {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+      background: #333;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .toggle-theme {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 2px solid #333;
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      background-color: #fff;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    body.dark .toggle-theme {
+      background-color: #1e1e1e;
+      border-color: #f5f5f5;
+      color: #f5f5f5;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      border-bottom: 2px solid #ccc;
+      display: inline-block;
+    }
+
+    .tool-box {
+      background: var(--card-light);
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    body.dark .tool-box {
+      background: var(--card-dark);
+      box-shadow: 0 2px 8px rgba(255, 255, 255, 0.05);
+    }
+
+    .tool-box input, .tool-box select {
+      width: 100%;
+      padding: 0.6rem;
+      margin: 0.5rem 0 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      background: #fff;
+      transition: background 0.3s ease;
+    }
+
+    body.dark .tool-box input,
+    body.dark .tool-box select {
+      background: #2a2a2a;
+      color: #f5f5f5;
+      border: 1px solid #555;
+    }
+
+    .tool-box button {
+      padding: 0.6rem 1.2rem;
+      background: var(--button-light);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    body.dark .tool-box button {
+      background: var(--button-dark);
+    }
+
+    .titles {
+      margin-top: 1.5rem;
+    }
+
+    .title-item {
+      background: #f0f0f0;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    body.dark .title-item {
+      background: #2a2a2a;
+    }
+
+    .saved-section {
+      margin-top: 2.5rem;
+      border-top: 1px solid #ccc;
+      padding-top: 1.5rem;
+    }
+
+    .saved-section h3 {
+      margin-bottom: 1rem;
+    }
+
+    .clear-btn {
+      margin-top: 1rem;
+      background: none;
+      border: 1px solid var(--button-light);
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      color: var(--button-light);
+      cursor: pointer;
+    }
+
+    body.dark .clear-btn {
+      border-color: var(--button-dark);
+      color: var(--button-dark);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <h1>Smart Blog Title Generator</h1>
+    <p>Create catchy, click-worthy titles in seconds</p>
+    <button class="cta" onclick="document.getElementById('tool').scrollIntoView({ behavior: 'smooth' })">Try It Now</button>
+    <button class="toggle-theme" onclick="toggleTheme()">Switch mode</button>
+  </header>
+
+  <!-- Title Generator -->
+  <section id="tool">
+    <h2 class="section-title">Generate Blog Titles</h2>
+    <div class="tool-box">
+      <label for="keywordInput">Keyword / Topic:</label>
+      <input type="text" id="keywordInput" placeholder="e.g. productivity, travel, AI" />
+
+      <label for="toneInput">Tone:</label>
+      <select id="toneInput">
+        <option value="professional">Professional</option>
+        <option value="casual">Casual</option>
+        <option value="funny">Funny</option>
+        <option value="urgent">Urgent</option>
+        <option value="inspirational">Inspirational</option>
+      </select>
+
+      <button onclick="generateTitles()">Generate Titles</button>
+
+      <div class="titles" id="titleList"></div>
+
+      <div class="saved-section">
+        <h3>Save Titles</h3>
+        <div class="titles" id="savedTitles"></div>
+        <button class="clear-btn" onclick="clearSaved()">Clear All</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2025 Smart Blog Title Generator. All rights reserved.
+  </footer>
+
+  <!-- Script -->
+  <script>
+    let saved = [];
+
+    function generateTitles() {
+      const titleList = document.getElementById('titleList');
+      const keyword = document.getElementById('keywordInput').value.trim();
+      const tone = document.getElementById('toneInput').value;
+      titleList.innerHTML = '';
+
+      if (!keyword) {
+        titleList.innerHTML = '<p>Please enter a keyword or topic first.</p>';
+        return;
+      }
+
+      const generatedTitles = [
+        `Top 5 ${keyword} Tips with a ${tone} Twist`,
+        `Why ${keyword} Matters: A ${tone} Perspective`,
+        `${tone.charAt(0).toUpperCase() + tone.slice(1)} Ways to Master ${keyword}`,
+        `What No One Tells You About ${keyword} (${tone} Edition)`,
+        `Your Ultimate ${tone} Guide to ${keyword}`
+      ];
+
+      generatedTitles.forEach(title => {
+        const div = document.createElement('div');
+        div.className = 'title-item';
+        div.textContent = title;
+        div.onclick = () => saveTitle(title);
+        titleList.appendChild(div);
+      });
+    }
+
+    function saveTitle(title) {
+      if (saved.includes(title)) return;
+      if (saved.length >= 5) {
+        alert("You can only save up to 5 titles.");
+        return;
+      }
+      saved.push(title);
+      renderSaved();
+    }
+
+    function renderSaved() {
+      const savedDiv = document.getElementById('savedTitles');
+      savedDiv.innerHTML = '';
+      saved.forEach(t => {
+        const div = document.createElement('div');
+        div.className = 'title-item';
+        div.textContent = t;
+        savedDiv.appendChild(div);
+      });
+    }
+
+    function clearSaved() {
+      saved = [];
+      renderSaved();
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+</html>
