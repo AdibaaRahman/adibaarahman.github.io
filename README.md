@@ -8,7 +8,7 @@
 👉 [Blog Title Generator](https://adibaarahman.github.io/blog-title-generator/tool.html)
 
 ✨ Also created my **Portfolio Website** showcasing my skills and projects:  
-👉 [Visit My Portfolio](https://adibaarahman.github.io/blog-title-generator/index.html)
+👉 [Visit My Portfolio](https://adibaarahman.github.io/)
 
 ---
 
