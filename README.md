@@ -5,7 +5,7 @@
 🎓 A passionate learner currently pursuing **NIELIT O-Level** in Information Technology.
 
 💡 I recently built a live tool:  
-👉 [Blog Title Generator](https://adibaarahman.github.io/blog-title-generator/tool.html)
+👉 [Blog Title Generator](https://adibaarahman.github.io/tool.html)
 
 ✨ Also created my **Portfolio Website** showcasing my skills and projects:  
 👉 [Visit My Portfolio](https://adibaarahman.github.io/)
